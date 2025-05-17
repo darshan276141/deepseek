@@ -1,12 +1,7 @@
 @import "tailwindcss";
 
-<<<<<<< HEAD
 @theme {
   --color-primary: #4d6bfe;
-=======
-@theme{
-  --color-primary:#4d6bfe;
->>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
 }
 
 html{
@@ -15,7 +10,6 @@ html{
 
 ::-webkit-scrollbar{
   display: none;
-<<<<<<< HEAD
 }
 .loader div:nth-child(2){
   animation-delay: 0.2s;
@@ -29,6 +23,4 @@ code{
 }
 pre{
   border-radius: 10px !important;
-=======
->>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
 }
