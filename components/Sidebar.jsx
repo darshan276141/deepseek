@@ -9,7 +9,11 @@ const Sidebar = ({ expand, setExpand }) => {
 
 
     const {openSignIn} = useClerk()
+<<<<<<< HEAD
     const {user, chats, createNewChat} = useAppContext()
+=======
+    const {user} = useAppContext()
+>>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
     const [openMenu, setOpenMenu] = useState({id: 0, open: false})
 
     return (
@@ -40,7 +44,11 @@ const Sidebar = ({ expand, setExpand }) => {
                 </div>
 
                 {/* New Chat Button */}
+<<<<<<< HEAD
                 <button onClick={createNewChat} className={`mt-8 flex items-center justify-center cursor-pointer ${expand ? "bg-primary hover:opacity-90 rounded-2xl gap-2 p-2.5 w-max" : "group relative h-9 w-9 mx-auto hover:bg-gray-500/30 rounded-lg"}`}>
+=======
+                <button className={`mt-8 flex items-center justify-center cursor-pointer ${expand ? "bg-primary hover:opacity-90 rounded-2xl gap-2 p-2.5 w-max" : "group relative h-9 w-9 mx-auto hover:bg-gray-500/30 rounded-lg"}`}>
+>>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
                     <Image
                         className={expand ? "w-6" : "w-7"}
                         src={expand ? assets.chat_icon : assets.chat_icon_dull}
@@ -56,8 +64,12 @@ const Sidebar = ({ expand, setExpand }) => {
                 {/* Recents Section */}
                 <div className={`mt-8 text-white/25 text-sm ${expand ? "block" : "hidden"}`}>
                     <p className='my-1'>Recents</p>
+<<<<<<< HEAD
                     {chats.map((chat, index)=><ChatLabel key={index} name={chat.name} id={chat._id} openMenu={openMenu} setOpenMenu={setOpenMenu}/>)}
                    
+=======
+                   <ChatLabel openMenu={openMenu} setOpenMenu={setOpenMenu}/>
+>>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
                 </div>
             </div>
 

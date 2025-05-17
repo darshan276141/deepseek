@@ -1,9 +1,14 @@
 "use client";
+<<<<<<< HEAD
 import { useAuth, useUser } from "@clerk/nextjs";
 import axios from "axios";
 import { children, createContext, useContext, useEffect } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
+=======
+import { useUser } from "@clerk/nextjs";
+import { children, createContext, useContext } from "react";
+>>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
 
 export const AppContext = createContext();
 
@@ -13,6 +18,7 @@ export const useAppContext = ()=>{
 
 export const AppContextProvider = ({children})=>{
     const {user}= useUser()
+<<<<<<< HEAD
     const {getToken} = useAuth()
 
     const [chats, setChats] = useState([]);
@@ -81,3 +87,11 @@ export const AppContextProvider = ({children})=>{
     }
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }}
+=======
+
+    const value = {
+        user
+    }
+    return <AppContext.Provider value={value}>{children}</AppContext.Provider>
+}
+>>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145

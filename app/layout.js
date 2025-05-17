@@ -1,11 +1,18 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+<<<<<<< HEAD
 import "./prism.css";
 import { ClerkProvider } from '@clerk/nextjs';
 import { AppContextProvider } from "@/context/AppContext";
 import { Toaster } from "react-hot-toast";
 
 // Initialize the Inter font
+=======
+import { ClerkProvider } from '@clerk/nextjs';
+import { AppContextProvider } from "@/context/AppContext";
+
+
+>>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -16,6 +23,7 @@ export const metadata = {
   description: "Full Stack Project",
 };
 
+<<<<<<< HEAD
 // RootLayout component to wrap the entire application
 export default function RootLayout({ children }) {
   return (
@@ -42,5 +50,20 @@ export default function RootLayout({ children }) {
         </ClerkProvider>
       </body>
     </html>
+=======
+export default function RootLayout({ children }) {
+  return (
+    <ClerkProvider>
+      <AppContextProvider>
+    <html lang="en">
+      <body
+        className={`${inter.variable} antialiased`}
+      >
+        {children}
+      </body>
+    </html>
+    </AppContextProvider>
+    </ClerkProvider>
+>>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
   );
 }

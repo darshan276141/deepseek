@@ -1,11 +1,19 @@
 "use client";
+<<<<<<< HEAD
 import Message from "@/components/Message";
+=======
+
+>>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
 import PromptBox from "@/components/PromptBox";
 import Sidebar from "@/components/Sidebar.jsx";
 import { assets } from "@/deepseek-assets/assets/assets";
 import Image from "next/image";
+<<<<<<< HEAD
 import { useEffect, useRef, useState } from "react";
 import { useAppContext } from "@/context/AppContext";
+=======
+import { useState } from "react";
+>>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
 
 
 export default function Home() {
@@ -13,6 +21,7 @@ export default function Home() {
   const [expand, setExpand] = useState(false)
   const [messages, setMessages] = useState([])
   const [isLoading, setisLoading] = useState(false)
+<<<<<<< HEAD
   const {selectedChat} = useAppContext()
   const containerRef = useRef(null)
 
@@ -31,6 +40,8 @@ export default function Home() {
      
     }
   }, [messages])
+=======
+>>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
 
 
 return (
@@ -54,6 +65,7 @@ return (
           </>
         ):
         (
+<<<<<<< HEAD
         <div ref={containerRef}
         className="relative flex flex-col items-center justify-start w-full mt-20 max-h-screen overflow-y-auto"
         >
@@ -75,6 +87,10 @@ return (
             )
           }
          
+=======
+        <div>
+          <Message role='user' content='what is next js'/>
+>>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
         </div>
       )
       }
