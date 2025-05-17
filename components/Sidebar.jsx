@@ -8,13 +8,9 @@ import ChatLabel from './ChatLabel';
 const Sidebar = ({ expand, setExpand }) => {
 
 
-    const {openSignIn} = useClerk()
-<<<<<<< HEAD
-    const {user, chats, createNewChat} = useAppContext()
-=======
-    const {user} = useAppContext()
->>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
-    const [openMenu, setOpenMenu] = useState({id: 0, open: false})
+const {openSignIn} = useClerk()
+const {user, chats, createNewChat} = useAppContext()
+const [openMenu, setOpenMenu] = useState({id: 0, open: false})
 
     return (
         <div className={`flex flex-col justify-between bg-[#212327] pt-7 transition-all z-50 max-md:absolute max-md:h-screen ${expand ? 'p-4 w-64' : 'md:w-20 w-0 max-md:overflow-hidden'}`}>
@@ -43,53 +39,26 @@ const Sidebar = ({ expand, setExpand }) => {
                     </div>
                 </div>
 
-                {/* New Chat Button */}
-<<<<<<< HEAD
-                <button onClick={createNewChat} className={`mt-8 flex items-center justify-center cursor-pointer ${expand ? "bg-primary hover:opacity-90 rounded-2xl gap-2 p-2.5 w-max" : "group relative h-9 w-9 mx-auto hover:bg-gray-500/30 rounded-lg"}`}>
-=======
-                <button className={`mt-8 flex items-center justify-center cursor-pointer ${expand ? "bg-primary hover:opacity-90 rounded-2xl gap-2 p-2.5 w-max" : "group relative h-9 w-9 mx-auto hover:bg-gray-500/30 rounded-lg"}`}>
->>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
-                    <Image
-                        className={expand ? "w-6" : "w-7"}
-                        src={expand ? assets.chat_icon : assets.chat_icon_dull}
-                        alt=""
-                    />
-                    <div className="absolute w-max -top-12 -right-12 opacity-0 group-hover:opacity-100 transition bg-black text-white text-sm px-3 py-2 rounded-lg shadow-lg pointer-events-none">
-                        New chat
-                        <div className="w-3 h-3 absolute bg-black rotate-45 left-4 -bottom-1.5"></div>
-                    </div>
-                    {expand && <p className="text-white text font-medium">New chat</p>}
-                </button>
-
-                {/* Recents Section */}
-                <div className={`mt-8 text-white/25 text-sm ${expand ? "block" : "hidden"}`}>
-                    <p className='my-1'>Recents</p>
-<<<<<<< HEAD
-                    {chats.map((chat, index)=><ChatLabel key={index} name={chat.name} id={chat._id} openMenu={openMenu} setOpenMenu={setOpenMenu}/>)}
-                   
-=======
-                   <ChatLabel openMenu={openMenu} setOpenMenu={setOpenMenu}/>
->>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
-                </div>
-            </div>
-
-            {/* Bottom Section */}
-            <div>
-                {/* QR & Get App */}
-                <div className={`flex items-center cursor-pointer group relative ${expand ? "gap-1 text-white/80 text-sm p-2.5 border border-primary rounded-lg hover:bg-white/10" : "h-10 w-10 mx-auto hover:bg-gray-500/30 rounded-lg"}`}>
-                    <Image
-                        className={expand ? "w-5" : "w-6.5 mx-auto"}
-                        src={expand ? assets.phone_icon : assets.phone_icon_dull}
-                        alt=""
-                    />
-                    <div className={`absolute -top-60 pb-8 ${!expand && "-right-40"} opacity-0 group-hover:opacity-100 hidden group-hover:block transition`}>
-                        <div className="relative w-max bg-black text-white text-sm p-3 rounded-lg shadow-lg">
-                            <Image src={assets.qrcode} alt="" className="w-44" />
-                            <p>Scan to get DeepSeek App</p>
-                            <div className={`w-3 h-3 absolute bg-black rotate-45 ${expand ? "right-1/2" : "left-4"} -bottom-1.5`}></div>
-                        </div>
-                    </div>
-                </div>
+{/* New Chat Button */}
+<button onClick={createNewChat} className={`mt-8 flex items-center justify-center cursor-pointer ${expand ? "bg-primary hover:opacity-90 rounded-2xl gap-2 p-2.5 w-max" : "group relative h-9 w-9 mx-auto hover:bg-gray-500/30 rounded-lg"}`}>
+    <Image
+        className={expand ? "w-6" : "w-7"}
+        src={expand ? assets.chat_icon : assets.chat_icon_dull}
+        alt=""
+    />
+    <div className="absolute w-max -top-12 -right-12 opacity-0 group-hover:opacity-100 transition bg-black text-white text-sm px-3 py-2 rounded-lg shadow-lg pointer-events-none">
+        New chat
+        <div className="w-3 h-3 absolute bg-black rotate-45 left-4 -bottom-1.5"></div>
+    </div>
+    {expand && <p className="text-white text font-medium">New chat</p>}
+</button>
+{/* Recents Section */}
+<div className={`mt-8 text-white/25 text-sm ${expand ? "block" : "hidden"}`}>
+    <p className='my-1'>Recents</p>
+    {chats && chats.map((chat, index) => (
+        <ChatLabel key={index} name={chat.name} id={chat._id} openMenu={openMenu} setOpenMenu={setOpenMenu}/>
+    ))}
+</div>
 
                 {/* "Get App" Label */}
                 {expand && (

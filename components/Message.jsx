@@ -1,5 +1,4 @@
 import { assets } from '@/deepseek-assets/assets/assets'
-<<<<<<< HEAD
 import Image from 'next/image'
 import Markdown from 'react-markdown'
 import React, { useEffect } from 'react'
@@ -13,70 +12,37 @@ const Message = ({role, content}) => {
 
     const copyMessage = ()=>{
         navigator.clipboard.writeText(content)
-        toast.success('Message copied to clipboard')
+        // toast.success('Message copied to clipboard') // Uncomment if toast is defined/imported
     }
-
-=======
-import React from 'react'
-
-const Message = ({role, content}) => {
->>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
   return (
     <div className='flex flex-col items-center w-full max-w-3xl text-sm' >
-        <div className={`felx flex-col w-full mb-8 ${role === 'user' && 'items-end'}`}>
-            <div className={`group relative flex max-w-2xl py-3 rounded-xl ${role === 'user' ? 'bg-[#414158] px-5' : 'gap-3'}`}>
-                <div className={`opacity-0 group-hover:opacity-100 absolute ${role === 'user' ? '-left-16 top-2.5': 'left-9 -bottom-6'} transition-all`}>
-                <div className='flex items-center gap-2 opacity-70'>
-                    {
-                        role === 'user' ?(
-                            <>
-<<<<<<< HEAD
-                            <Image onClick={copyMessage} src={assets.copy_icon} alt='' className='w-4.5 cursor-pointer'/>
-                            <Image src={assets.pencil_icon} alt='' className='w-4.5 cursor-pointer'/>
-                           
-                            </>
-                        ):( 
-                            <>
-                            <Image onClick={copyMessage} src={assets.copy_icon} alt='' className='w-4.5 cursor-pointer'/>
-=======
-                            <Image src={assets.copy_icon} alt='' className='w-4.5 cursor-pointer'/>
-                            <Image src={assets.regenerate_icon} alt='' className='w-4.5 cursor-pointer'/>
-                            <Image src={assets.like_icon} alt='' className='w-4.5 cursor-pointer'/>
-                            <Image src={assets.dislike_icon} alt='' className='w-4.5 cursor-pointer'/>
-                            </>
-                        ):( 
-                            <>
-                            <Image src={assets.copy_icon} alt='' className='w-4.5 cursor-pointer'/>
->>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
-                            <Image src={assets.regenerate_icon} alt='' className='w-4.5 cursor-pointer'/>
-                            <Image src={assets.like_icon} alt='' className='w-4.5 cursor-pointer'/>
-                            <Image src={assets.dislike_icon} alt='' className='w-4.5 cursor-pointer'/>
-                            </>
-                        ) 
-                    }
-                </div>
-                </div>
-                {
-                    role === 'user' ?
-                    (
-                        <span className='text-white/90'>{content}</span>
-                    )
-                    :
-                    (
-                        <>
-                        <Image src={assets.logo_icon} alt='' className='h-9 w-9 p-1 border border-white/15 rounded-full'/>
-<<<<<<< HEAD
-                        <div className='space-y-4 w-full overflow-scroll'>
-                            <Markdown>{content}</Markdown>
-                            </div>
-=======
-                        <div className='space-y-4 w-full overflow-scroll'>{content}</div>
->>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
-                        </>
-                    )
-                }
+      <div className={`felx flex-col w-full mb-8 ${role === 'user' && 'items-end'}`}>
+        <div className={`group relative flex max-w-2xl py-3 rounded-xl ${role === 'user' ? 'bg-[#414158] px-5' : 'gap-3'}`}>
+          <div className={`opacity-0 group-hover:opacity-100 absolute ${role === 'user' ? '-left-16 top-2.5': 'left-9 -bottom-6'} transition-all`}>
+            <div className='flex items-center gap-2 opacity-70'>
+              {
+                role === 'user' ? (
+                  <>
+                    <Image onClick={copyMessage} src={assets.copy_icon} alt='' className='w-4.5 cursor-pointer'/>
+                    <Image src={assets.pencil_icon} alt='' className='w-4.5 cursor-pointer'/>
+                  </>
+                ) : (
+                  <>
+                    <Image onClick={copyMessage} src={assets.copy_icon} alt='' className='w-4.5 cursor-pointer'/>
+                    <Image src={assets.regenerate_icon} alt='' className='w-4.5 cursor-pointer'/>
+                    <Image src={assets.like_icon} alt='' className='w-4.5 cursor-pointer'/>
+                    <Image src={assets.dislike_icon} alt='' className='w-4.5 cursor-pointer'/>
+                  </>
+                )
+              }
             </div>
+          </div>
+          <Image src={assets.logo_icon} alt='' className='h-9 w-9 p-1 border border-white/15 rounded-full'/>
+          <div className='space-y-4 w-full overflow-scroll'>
+            <Markdown>{content}</Markdown>
+          </div>
         </div>
+      </div>
     </div>
   )
 }

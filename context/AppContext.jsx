@@ -1,97 +1,94 @@
 "use client";
-<<<<<<< HEAD
 import { useAuth, useUser } from "@clerk/nextjs";
 import axios from "axios";
-import { children, createContext, useContext, useEffect } from "react";
-import { useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-=======
-import { useUser } from "@clerk/nextjs";
-import { children, createContext, useContext } from "react";
->>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
 
 export const AppContext = createContext();
 
-export const useAppContext = ()=>{
-    return useContext(AppContext)
-}
+export const useAppContext = () => {
+    return useContext(AppContext);
+};
 
-export const AppContextProvider = ({children})=>{
-    const {user}= useUser()
-<<<<<<< HEAD
-    const {getToken} = useAuth()
+export const AppContextProvider = ({ children }) => {
+    const { user } = useUser();
+    const { getToken } = useAuth();
 
     const [chats, setChats] = useState([]);
-    const [selectedChat, setSelectedChat] = useState([null]);
+    const [selectedChat, setSelectedChat] = useState(null);
 
-    const createNewChat = async ()=>{
+    const createNewChat = async () => {
         try {
-            if(!user) return null;
+            if (!user) return null;
             const token = await getToken();
-            await axios.post("/api/chat/create", {}, {
-                headers: {
-                    Authorization: `Bearer ${token}`
+            await axios.post(
+                "/api/chat/create",
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
                 }
-            })
+            );
 
             fetchUsersChats();
-            
         } catch (error) {
-            toast.error("error.message")
+            toast.error(error.message);
         }
-    }
+    };
 
-    const fetchUsersChats = async ()=>{
+    const fetchUsersChats = async () => {
         try {
-              const token = await getToken();
-            const {data} = await axios.get("/api/chat/get", {
+            const token = await getToken();
+            const { data } = await axios.get("/api/chat/get", {
                 headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-            if(data.success){
-               console.log(data.data)
-                setChats(data.data)
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            if (data.success) {
+                console.log(data.data);
+                setChats(data.data);
 
                 // If there are no chats, create a new one
-                if(data.data.length === 0){
+                if (data.data.length === 0) {
                     await createNewChat();
-                    return fetchUsersChats
-                    
-                }else{
+                    return fetchUsersChats();
+                } else {
                     // sort chats by updated date
-                    data.data.sort((a, b)=> new Date(b.updatedAt) - new Date(a.updatedAt));
-                    //set recently updated chat as selected chat
+                    data.data.sort(
+                        (a, b) =>
+                            new Date(b.updatedAt) - new Date(a.updatedAt)
+                    );
+                    // set recently updated chat as selected chat
                     setSelectedChat(data.data[0]);
-                    console.log(data.data[0])
+                    console.log(data.data[0]);
                 }
             } else {
-                toast.error(data.message)
+                toast.error(data.message);
             }
         } catch (error) {
-             toast.error(data.message)
+            toast.error(error.message);
         }
-        useEffect(()=>{
-            if(user){
-                fetchUsersChats();
-            }
-        }, [user])
+    };
+
+    useEffect(() => {
+        if (user) {
+            fetchUsersChats();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [user]);
+
     const value = {
-        user, 
+        user,
         chats,
         setChats,
         selectedChat,
         setSelectedChat,
         fetchUsersChats,
-        createNewChat
-    }
-    return <AppContext.Provider value={value}>{children}</AppContext.Provider>
-}}
-=======
+        createNewChat,
+    };
 
-    const value = {
-        user
-    }
-    return <AppContext.Provider value={value}>{children}</AppContext.Provider>
-}
->>>>>>> db45bc24f0c6e1e4e87e8cd73a48c6c017c80145
+    return (
+        <AppContext.Provider value={value}>{children}</AppContext.Provider>
+    );
+};
